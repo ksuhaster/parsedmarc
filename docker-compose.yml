@@ -1,0 +1,13 @@
+version: '3.2'
+services:
+
+  parsedmarc:
+    image: parsedmarc:0.5
+    build:
+      context: .
+      dockerfile: Dockerfile-parsedmarc
+    volumes:
+     - ./parsedmarc.ini:/etc/parsedmarc.ini
+     - ./GeoIP.conf:/etc/GeoIP.conf
+    command: parsedmarc -c /etc/parsedmarc.ini
+

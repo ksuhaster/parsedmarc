@@ -1,0 +1,10 @@
+FROM ubuntu:18.04
+ENV PYTHONUNBUFFERED 1
+RUN apt-get update && apt-get install -y python3-pip
+ENV LANG=en_US.UTF-8
+RUN mkdir /code
+WORKDIR /code
+RUN pip3 install --upgrade pip
+ENV PARSEDMARC_VERSION 8.3.0
+RUN apt-get install -y gcc libxml2-dev libxslt-dev libz-dev geoipupdate \
+    && pip install -U parsedmarc==$PARSEDMARC_VERSION
